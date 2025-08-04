@@ -1,0 +1,20 @@
+[package]
+name = "hodis"
+version = "0.1.0"
+edition = "2024"
+authors = ["Silen Locatelli", "Lunch Time Code"]
+license-file = "LICENSE"
+
+[dependencies]
+turso = "0.1"
+tokio = { version = "1.0", features = ["full"] }
+actix-files = "0.6.6"
+actix-web = { version = "4.11.0", default-features = false, features = [
+    "rustls",
+    "compress-brotli",
+    "http2",
+    "macros",
+] }
+log = "0.4.27"
+env_logger = "0.11.8"
+maud = { version = "0.27.0", features = ["actix-web"] }
