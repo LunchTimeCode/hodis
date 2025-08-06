@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 
 CREATE INDEX index_jobs ON jobs(id);
 
-CREATE TABLE IF NOT EXISTS assignees (
+CREATE TABLE IF NOT EXISTS assignee (
     id TEXT,
     job_id TEXT,
     name TEXT,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS assignees (
 );
 
 
-CREATE TABLE IF NOT EXISTS Bussen (
+CREATE TABLE IF NOT EXISTS fine (
     id TEXT,
     category TEXT,
     title TEXT,

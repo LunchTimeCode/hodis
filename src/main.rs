@@ -1,8 +1,10 @@
+use actix_files as fs;
 use actix_web::{App, HttpServer, middleware::Logger, web};
 use env_logger::Env;
 use std::env;
 
 mod db;
+mod index;
 mod jobs;
 mod tec;
 
@@ -19,6 +21,13 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .wrap(Logger::new("%a %{User-Agent}i"))
             .service(tec::healthz)
+            .service(index::index_route)
+            .service(jobs::jobs_index)
+            .service(
+                fs::Files::new("/assets", "assets")
+                    .show_files_listing()
+                    .use_last_modified(true),
+            )
             .app_data(web::Data::new(db.clone()))
     })
     .bind(("127.0.0.1", 9898))?
